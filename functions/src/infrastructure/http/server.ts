@@ -15,7 +15,7 @@ export function buildServer(routers: {
             if (!origin) return cb(null, true);
 
             const allowed = [
-                "http://localhost:3000",
+                "http://localhost:4200",
             ];
 
             if (allowed.includes(origin)) return cb(null, true);

@@ -15,8 +15,7 @@ export class LoginUserUseCase {
         const email = Email.create(input.email);
 
         const user = await this.userRepository.findByEmail(email);
-
-        if (!user) throw new UserNotFoundError;
+        if (!user) throw new UserNotFoundError();
         const token = this.jwtSigner.sign({
             sub: user.id,
             email: user.email.getValue(),

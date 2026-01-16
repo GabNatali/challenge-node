@@ -1,4 +1,4 @@
-import {Request, Response} from "express";
+import {NextFunction, Request, Response} from "express";
 import {InvalidEmailError} from "../../../domain/user/errors/InvalidEmailError";
 import {UserAlreadyExistsError} from "../../../domain/user/errors/UserAlreadyExistsError";
 import {UserNotFoundError} from "../../../domain/user/errors/UserNotFoundError";
@@ -7,6 +7,7 @@ export function errorHandler(
     err: unknown,
     _req: Request,
     res: Response,
+    _next: NextFunction
 ) {
     if (err instanceof InvalidEmailError) {
         return res.status(400).json({message: err.message});
