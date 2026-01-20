@@ -1,0 +1,31 @@
+<app-loading [autoMode]='true'></app-loading>
+
+<div class="sign-in-layout">
+  <div class="sign-in-container">
+    @if(authErrorMessage()){
+      <div class="auth-error" role="alert"> {{ authErrorMessage() }}  </div>
+    }
+    <img ngSrc="assets/images/logo-atom-chat.png" width="192.5" height="55" alt="Logo">
+    <form class="sign-in-form" [formGroup]="signInForm" #signInNgForm="ngForm">
+      <mat-form-field appearance="outline" >
+        <mat-label >Email address</mat-label>
+        <input id="email" matInput [formControlName]="'email'">
+        @if(signInForm.get('email')?.hasError('required')){
+          <mat-error> Email address is required </mat-error>
+        }
+
+        @if(signInForm.get('email')?.hasError('email')){
+          <mat-error> Please enter a valid email address </mat-error>
+        }
+      </mat-form-field>
+
+      <button mat-flat-button [color]="'primary'" [disabled]="signInForm.disabled" (click)="signIn()">
+        <span *ngIf="!signInForm.disabled">
+          Sign in
+        </span>
+
+      </button>
+
+    </form>
+  </div>
+</div>

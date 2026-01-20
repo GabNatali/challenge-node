@@ -1,0 +1,29 @@
+<div class="dialog">
+    <div class="dialog__content">
+      <div class="dialog__icon">
+          <mat-icon>info</mat-icon>
+            </div>
+            <div class="dialog__text">
+                    <div class="dialog__title">Confirmar</div>
+                    <div class="dialog__message">El correo ingresado no existe, deseas crear una cuenta con este correo?</div>
+            </div>
+
+    </div>
+
+        <div class="dialog__actions">
+                <button
+                    mat-button
+                    [matDialogClose]="'cancelled'">
+                    {{'cancel'}}
+                </button>
+
+                <button
+                    mat-flat-button
+                    [color]="'primary'"
+                    [matDialogClose]="'confirmed'">
+                    {{'confirm'}}
+                </button>
+
+        </div>
+
+</div>

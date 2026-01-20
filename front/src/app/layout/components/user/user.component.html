@@ -1,0 +1,20 @@
+<button mat-icon-button [matMenuTriggerFor]="userActions">
+    <mat-icon color="primary" >person</mat-icon>
+</button>
+<mat-menu
+    [xPosition]="'before'"
+    #userActions="matMenu">
+    <button mat-menu-item>
+        <span class="user-menu">
+            <span class="user-menu__label">Signed in as</span>
+            <span class="user-menu__email">{{user()?.email}}</span>
+        </span>
+    </button>
+    <mat-divider class="user-menu__divider"></mat-divider>
+    <button
+        mat-menu-item
+        class="user-menu__logout"
+        (click)="logout()">
+        <span>Sign out</span>
+    </button>
+</mat-menu>
