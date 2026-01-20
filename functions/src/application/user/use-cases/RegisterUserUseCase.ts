@@ -32,9 +32,10 @@ export class RegisterUserUseCase {
         await this.userRepository.save(user);
 
         return {
-            id: user.id,
-            email: user.email.getValue(),
-            createdAt: user.createdAt.toISOString(),
+            user: {
+                id: user.id,
+                email: user.email.getValue(),
+            },
             token: token,
         };
     }

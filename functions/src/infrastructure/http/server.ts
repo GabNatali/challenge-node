@@ -5,7 +5,6 @@ import cors, {CorsOptions} from "cors";
 export function buildServer(routers: {
     authRouter: express.Router;
     userRouter: express.Router;
-    meRouter: express.Router;
     taskRouter : express.Router;
 }): express.Express {
     const app = express();
@@ -32,7 +31,6 @@ export function buildServer(routers: {
     app.use("/",
         routers.userRouter,
         routers.authRouter,
-        routers.meRouter,
         routers.taskRouter
     );
 

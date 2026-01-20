@@ -3,8 +3,12 @@ export type RegisterUserRequestDTO = {
 };
 
 export type RegisterUserResponseDTO = {
-    id: string;
-    email: string;
-    createdAt: string;
+    user: User;
     token: string;
 };
+
+export type User = {
+    id: string;
+    email: string;
+};
+

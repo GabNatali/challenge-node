@@ -3,5 +3,13 @@ export type LoginRequestDTO = {
 };
 
 export type LoginResponseDTO = {
+    user: User;
     token: string;
 };
+
+
+export type User = {
+    id: string;
+    email: string;
+};
+
