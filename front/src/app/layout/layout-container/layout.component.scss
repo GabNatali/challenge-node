@@ -1,50 +1,72 @@
 @use '../../../assets/styles/media' as *;
 
-.app-layout {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-width: 0;
-  height: 100vh;
-}
-
-.app-header {
-  position: relative;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 4rem;
-  padding: 0 1rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-
-  @include sm {
-    height: 5rem;
-  }
-
-}
-
-.app-header__logo {
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
-
-  img {
-    width: 8rem;
-    height: auto;
-    @include lg {
-      width: 10rem;
+.layout {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    > * {
+        position: relative;
+        display: flex;
+        flex: 1 1 auto;
+        width: 100%;
     }
 
-    .dark & {
-      display: none;
+    &__header {
+      position: relative;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4rem !important;
+      max-height: 4rem;
+      padding: 0 2rem;
+      box-sizing: border-box;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+
+      @include sm {
+        height: 5rem;
+      }
     }
-  }
+
+    &__logo {
+      display: flex;
+      align-items: center;
+      margin-right: 2rem;
+
+      img {
+        width: 5rem;
+        height: auto;
+        @include lg {
+          width: 6rem;
+        }
+
+        .dark & {
+          display: none;
+        }
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex: auto;
+      flex-direction: column;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    router-outlet {
+      position: relative;
+      display: flex;
+      flex: 1 1 auto;
+      width: 100%;
+    }
+
 }
 
-.app-content {
-  flex: auto;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
+
+
+

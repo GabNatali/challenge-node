@@ -8,7 +8,6 @@ export const LoadingInterceptor = (req: HttpRequest<unknown>, next: HttpHandlerF
     const loadingService = inject(LoadingService);
 
     const handleRequestsAutomatically = computed(() => loadingService.auto());
-    console.log(handleRequestsAutomatically(), 'handleRequestsAutomatically');
 
     if (!handleRequestsAutomatically()) return next(req);
 

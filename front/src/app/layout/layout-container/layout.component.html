@@ -1,7 +1,7 @@
-
-<div class="app-layout">
-    <div class="app-header">
-            <div class="app-header__logo">
+<app-loading [autoMode]='true'></app-loading>
+<div class="layout">
+    <div class="layout__header">
+            <div class="layout__logo">
                 <img
                     ngSrc="assets/images/logo-atom-chat.png"
                     width="192.5" height="55"
@@ -10,7 +10,7 @@
             <user></user>
       </div>
 
-    <div class="app-content">
+    <div class="layout__content">
         <router-outlet></router-outlet>
     </div>
   </div>

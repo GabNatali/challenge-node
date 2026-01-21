@@ -79,7 +79,7 @@ export class SignInComponent {
   private redirectAfterLogin(): void {
     const redirectURL =
       this._activatedRoute.snapshot.queryParamMap.get('redirectURL') ||
-      '/home';
+      '/';
 
     this._router.navigateByUrl(redirectURL);
   }
