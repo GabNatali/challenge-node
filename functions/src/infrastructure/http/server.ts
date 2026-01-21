@@ -14,7 +14,7 @@ export function buildServer(routers: {
             if (!origin) return cb(null, true);
 
             const allowed = [
-                "http://localhost:4200",
+                "https://challenge-319e4.web.app",
             ];
 
             if (allowed.includes(origin)) return cb(null, true);
