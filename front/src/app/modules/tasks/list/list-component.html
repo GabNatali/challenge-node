@@ -1,0 +1,75 @@
+<div class="tasks">
+    <mat-drawer-container
+        class="tasks__container"
+        (backdropClick)="onBackdropClicked()">
+
+        <mat-drawer
+            class="tasks__drawer"
+            [mode]="drawerMode()"
+            [opened]="false"
+            [position]="'end'"
+            [disableClose]="true"
+            #matDrawer
+        >
+            <router-outlet></router-outlet>
+        </mat-drawer>
+
+        <mat-drawer-content class="tasks__content">
+            <div class="tasks__main">
+                <div class="tasks__header">
+                    <div>
+                      <div class="tasks__title">Tasks</div>
+                    </div>
+                    <div class="tasks__actions">
+                      <button mat-flat-button [color]="'primary'" (click)="createTask()">
+                        <span>Add Task</span>
+                      </button>
+                    </div>
+                </div>
+
+                @if(tasks() && tasks().length > 0){
+                    <div class="tasks__list">
+                      @for(task of tasks(); track task.id; let first = $first){
+                            <div
+                                [id]="'task-' + task.id"
+                                class="tasks__row"
+                                [class.tasks__row--first]="first"
+                                [ngClass]="{'color-secondary': task.status === 'DONE'}">
+
+                                <div class="tasks__item">
+                                    @if(selectedTask() && selectedTask()?.id === task.id){
+                                      <div class="tasks__selected-indicator"></div>
+                                    }
+                                    <button  mat-icon-button class="tasks__task-button" (click)="toggleCompleted(task)" [matTooltip]="task.status==='PENDING' ? 'Mark as completed' : 'Mark as pending'">
+                                        @if(task.status === 'PENDING'){
+                                            <mat-icon class="color-secondary icon-size-6">check_circle_outlined</mat-icon>
+                                        }@else{
+                                            <mat-icon class="color-primary icon-size-6">check_circle_outlined</mat-icon>
+                                        }
+                                    </button>
+                                    <a class="tasks__task-link" [routerLink]="[task.id]">
+                                        <div class="tasks__task-title">
+                                            <span>{{task.title}}</span>
+                                        </div>
+                                        <div
+                                            class="tasks__task-date">
+                                            {{task.createdAt | date:'LLL dd'}}
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                      }
+                    </div>
+                } @else {
+                  <div class="tasks__empty">
+                    <mat-icon class="icon-size-18 tasks__empty-icon">assignment</mat-icon>
+                    <div class="tasks__empty-text">Add a task to start planning!</div>
+                  </div>
+                }
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>

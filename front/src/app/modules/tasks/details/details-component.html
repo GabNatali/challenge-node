@@ -1,0 +1,75 @@
+<div class="task">
+
+    <form
+        class="task__form"
+        [formGroup]="taskForm">
+
+        <div class="task__form-header">
+
+          @if(isNew()){
+            <h2>New Task</h2>
+          }
+          @if(isEdit()){
+            <button
+                mat-button
+                (click)="toggleCompleted()">
+
+                @if (markAsCompleted()) {
+                  <div>
+                      <mat-icon>check_circle_outlined</mat-icon>
+                      <span>MARK AS COMPLETE</span>
+                  </div>
+                }
+
+                @if(!markAsCompleted()) {
+                    <div class="flex items-center justify-center">
+                        <mat-icon color="primary">check_circle_outlined</mat-icon>
+                        <span class="ml-2 font-semibold">MARK AS INCOMPLETE</span>
+                    </div>
+                }
+
+            </button>
+          }
+
+          <a mat-icon-button matTooltip="Cancel" [routerLink]="['../']">
+            <mat-icon>close</mat-icon>
+          </a>
+
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="task__form-fields">
+            <mat-form-field [subscriptSizing]="'dynamic'"  appearance="outline">
+                <mat-label>Title</mat-label>
+                <textarea
+                    matInput
+                    [formControlName]="'title'"
+                    [spellcheck]="false"
+                    cdkTextareaAutosize
+                  ></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="task__form-fields mt-8">
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea
+                    matInput
+                    [formControlName]="'description'"
+                    [spellcheck]="false"
+                    cdkTextareaAutosize></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="task__form-actions">
+          @if(isEdit()){
+            <button mat-button  (click)="deleteTask()"> Delete </button>
+          }
+          <button mat-flat-button [color]="'primary'" (click)="saveTask()" >{{isNew() ? 'Create' : 'Update'}}</button>
+        </div>
+
+
+    </form>
+
+</div>

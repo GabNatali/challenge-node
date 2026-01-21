@@ -7,7 +7,7 @@ import { LayoutComponent } from "./layout/layout-container/layout.component";
 export const routes: Routes = [
     {
         path: "",
-        redirectTo: "/home",
+        redirectTo: "/tasks",
         pathMatch: "full"
     },
     {
@@ -17,9 +17,9 @@ export const routes: Routes = [
         component:LayoutComponent,
         children: [
             {
-              path: "home",
-              loadComponent: () => import("./modules/example-page/example-page.component")
-            },
+              path: "tasks",
+              loadChildren: () => import("./modules/tasks/tasks.routes")
+            }
         ]
     },
     {
